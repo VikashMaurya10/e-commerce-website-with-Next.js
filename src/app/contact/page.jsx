@@ -20,7 +20,8 @@ const Contact = () => {
           <div className='sm:w-1/2 '>
             <h1 className='text-4xl font-rale font-semibold text-center'>Contact Us</h1>
             <div className='ml-4'>
-              <p className="mt-3 lg:mb-8 mb-4 text-center sm:text-left">Any query and info about product feel free to call us. <span className='lg:block'>We'r available 24<span>x</span>7.</span></p>
+              <p className="mt-3 lg:mb-8 mb-4 text-center sm:text-left">Any query and info about product feel free to call us.
+                <span className='lg:block'>We are available 24<span>x</span>7.</span></p>
               <p><SiMinutemailer className='lg:text-3xl text-2xl text-red-700 inline' /> www.help@ecommerceapp.com</p>
               <p><BiSolidPhoneCall className='lg:text-3xl text-2xl text-red-700 inline mt-1' /> 012-3456789</p>
               <p><SlEarphonesAlt className='lg:text-2xl text-xl text-red-700 inline mr-1 mt-1' /> 1800-1800-123-00</p>

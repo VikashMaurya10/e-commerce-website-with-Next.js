@@ -17,6 +17,8 @@ const AuthProvider = ({ children }) => {
         user: userData.user,
       });
     }
+
+    // eslint-disable-next-line
   }, []);
 
   return (
