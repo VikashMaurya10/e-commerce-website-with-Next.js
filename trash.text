@@ -1,0 +1,27 @@
+import React from 'react'
+
+async function getServerSideProps() {
+    const res = await fetch("https://dummyjson.com/users");
+    if (!res.ok) {
+        // This will activate the closest `error.js` Error Boundary
+        throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+}
+
+
+const Page = async () => {
+    const data = await getServerSideProps();
+
+    console.log(data);
+    return (
+        <>
+            {data.users.map((value, i) => {
+                return <h1>{value.firstName}</h1>;
+            })}
+        </>
+    );
+}
+
+export default Page
