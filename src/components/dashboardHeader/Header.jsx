@@ -36,16 +36,15 @@ const Header = () => {
         <div className='flex flex-col gap-3 capitalize font-robo font-medium text-base w-full whitespace-nowrap'>
             <h1 className="text-center pt-3 font-rale font-semibold">{auth?.user?.role == 1 ? "Admin Panel" : "dashboard"}</h1>
             {
-                auth?.user?.role == 1 ? adminNavLink : userNavLink
-                    ?.map((value, i) => {
-                        return (
-                            <Link key={i} href={value.to} className={`py-1 px-4 border border-gray-500 rounded text-sm hover:bg-red-900 hover:text-white transition-colors duration-300 ${pathname == value.to ? "bg-red-900 text-white" : ""}`}>
-                                {
-                                    value.linkTitle
-                                }
-                            </Link>
-                        )
-                    })
+                (auth?.user?.role == 1 ? adminNavLink : userNavLink)?.map((value, i) => {
+                    return (
+                        <Link key={i} href={value.to} className={`py-1 px-4 border border-gray-500 rounded text-sm hover:bg-red-900 hover:text-white transition-colors duration-300 ${pathname == value.to ? "bg-red-900 text-white" : ""}`}>
+                            {
+                                value.linkTitle
+                            }
+                        </Link>
+                    )
+                })
             }
 
         </div>
