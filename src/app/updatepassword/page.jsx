@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineGoogle } from 'react-icons/ai'
 import { useSearchParams } from "next/navigation"
+import { useRouter } from "next/router"
 
 
 const Updatepassword = () => {
@@ -13,6 +14,7 @@ const Updatepassword = () => {
     const [Token, setToken] = useState("")
 
     const searchParams = useSearchParams()
+    const router = useRouter()
     const handleChange = (e) => {
         setpassword(e.target.value)
     }
@@ -41,6 +43,7 @@ const Updatepassword = () => {
                 toast.error(res?.data?.error)
             } else {
                 toast.success(res?.data?.message)
+                router.push("/login")
             }
         }).catch((error) => {
             console.log(error);

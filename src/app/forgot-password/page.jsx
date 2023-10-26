@@ -1,6 +1,7 @@
 "use client"
 
 import axios from "axios"
+import { useRouter } from "next/router"
 import { useState } from "react"
 import { toast } from "react-toastify"
 
@@ -21,12 +22,11 @@ const ForgotPassword = () => {
                 toast.error(res?.data?.error)
             } else {
                 toast.success(res?.data?.message)
+                setEmail("")
             }
         }).catch((error) => {
             console.log(error);
         })
-        document.querySelector("#email").value = ""
-        setEmail("")
     }
     return (
         <section className='flex items-center justify-center min-h-[90vh]  bg-gray-400/30'>
@@ -43,6 +43,7 @@ const ForgotPassword = () => {
                                 placeholder='You email'
                                 className='py-1 w-full bg-transparent text-black'
                                 onChange={handleChange}
+                                value={email}
                             />
                             <div className='w-full h-[0.1rem] bg-red-800 rounded-sm'></div>
                         </div>
@@ -55,7 +56,6 @@ const ForgotPassword = () => {
                         </button>
                     </form>
                 </div>
-
             </section >
         </section>
     )

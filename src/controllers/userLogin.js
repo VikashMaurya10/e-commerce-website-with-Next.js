@@ -43,6 +43,7 @@ const userLogin = async (req) => {
     }
     const payload = {
       _id: isExistUser._id,
+      role:isExistUser.role
     };
 
     const token = await jwt.sign(payload, process.env.JWT_SECRET, {
@@ -55,6 +56,7 @@ const userLogin = async (req) => {
       email: isExistUser.email,
       phone: isExistUser.phone,
       address: isExistUser.address,
+      role: isExistUser.role,
     };
 
     const response = responseHandler("login Successful", { user });

@@ -3,23 +3,37 @@ import { verifyAuth } from "./helpers/verifyAuth";
 
 // Limit the middleware to paths starting
 export const config = {
-  matcher: ["/dashboard/:path*", "/api/user/:path*", "/api/auth/logout"],
+  matcher: ["/dashboard/(.*)", "/api/user/:path*", "/api/auth/logout"],
 };
+// /(.*) or /:path* same
 
 export async function middleware(req) {
-  const path = req.nextUrl.pathname.slice(1);
+  const path = await req.nextUrl.pathname;
+  const redirectPathPattern = path.slice(1);
+  // console.log("path>>>>>", path);
 
-  // get token from header
+  // get token form header
   // const headersInstance = req.headers;
   // const token = headersInstance.get("token");
 
   // get token form cookie
   const token = await req.cookies?.get("token")?.value;
   const isVeryfiedToken = await verifyAuth(token);
+  // isVeryfiedToken has _id , role
+
+  // check if user isAdmin then he/she not able to visit to user dashboard
+  if (isVeryfiedToken?.role == 0 && path.startsWith("/dashboard/admin")) {
+    return NextResponse.redirect(new URL(`/dashboard/user`, req.url));
+  }
+  if (isVeryfiedToken?.role == 1 && path.startsWith("/dashboard/user")) {
+    return NextResponse.redirect(new URL(`/dashboard/admin`, req.url));
+  }
 
   // if token is not there then redirect user to login
   if (!token) {
-    return NextResponse.redirect(new URL(`/login?redirect=${path}`, req.url));
+    return NextResponse.redirect(
+      new URL(`/login?redirect=${redirectPathPattern}`, req.url)
+    );
   }
 
   if (!isVeryfiedToken || !token) {
