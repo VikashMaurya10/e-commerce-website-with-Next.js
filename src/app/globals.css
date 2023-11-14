@@ -26,3 +26,25 @@ input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
     display: none;
 }
+
+/* For style scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0 3px 3px 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0 3px 3px 0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

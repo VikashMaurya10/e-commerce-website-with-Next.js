@@ -3,11 +3,10 @@ import { useAuth } from '@/context/auth-provider'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 
-const Dashboard = () => {
+const AdminDashboard = () => {
   const router = useRouter()
   const [auth] = useAuth()
   useEffect(() => {
-    console.log(auth);
     router.push(`/dashboard/${auth?.user?.role == 1 ? "admin/create-category" : "user/profile"}`)
   }, [router, auth])
   return (
@@ -16,4 +15,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default AdminDashboard

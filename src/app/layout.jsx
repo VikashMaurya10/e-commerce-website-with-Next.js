@@ -15,11 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} ${raleway.variable} ${inter.variable}`}
+        className={`${roboto.variable} ${raleway.variable} ${inter.variable} `}
       >
         <AuthProvider>
           <Header />
-          <main className="min-h-[85vh]">{children}</main>
+          <main className="min-h-[85vh] font-robo">{children}</main>
           <Footer />
           <ToastContainer autoClose={2000} pauseOnHover />
         </AuthProvider>
