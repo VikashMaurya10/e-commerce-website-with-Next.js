@@ -10,13 +10,13 @@ const CreateCategory = () => {
   const [category, setCategory] = useState([])
   const [categoryName, setCategoryName] = useState("")
 
-
   // get category
   const getCategory = async () => [
     await axios({
       method: 'get',
       url: "/api/category"
     }).then((res) => {
+      console.log(res.data);
       setCategory(res.data.categories)
     }).catch((err) => {
       console.log(err);
@@ -33,6 +33,7 @@ const CreateCategory = () => {
         return toast.error(res?.data?.error)
       }
       setCategoryName("")
+      getCategory()
       return toast.success(res?.data?.message)
     }).catch((err) => {
       console.log(err);
@@ -46,8 +47,6 @@ const CreateCategory = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     addNewCategory()
-    getCategory()
-
   }
   // console.log(category);
   return (
