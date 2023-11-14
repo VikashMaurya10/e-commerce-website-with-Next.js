@@ -66,7 +66,7 @@ const updateCategoryById = async (req, params) => {
 const getCategroies = async () => {
   connectDB();
   try {
-    const categories = await categoryModel.find();
+    const categories = await categoryModel.find({});
     return responseHandler("List of all cataegory", { categories });
   } catch (error) {
     return errorHandler("Error in get category", error.message);
