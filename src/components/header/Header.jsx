@@ -71,7 +71,8 @@ const Header = () => {
     })
   }
   return (
-    <header className='text-black bg-gray-100 py-4 capitalize font-medium shadow-lg'>
+    // bg-gray-100 
+    <header className='text-black shadow-normal py-4 capitalize font-medium '>
       <nav className='relative flex items-center justify-between sm:max-w-[80%] max-w-[90%] mx-auto'>
         <Link href={"/"}><FaShopify className='text-5xl text-red-700' /></Link>
         {/* desktop nav */}
