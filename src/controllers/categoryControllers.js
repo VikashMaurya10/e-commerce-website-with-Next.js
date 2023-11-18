@@ -28,10 +28,9 @@ const createCategory = async (req) => {
     if (!create_category) {
       return errorHandler("Cartegory not saved");
     }
-
     return responseHandler("category created successfully");
   } catch (err) {
-    errorHandler("Error in create category", err.message);
+    return errorHandler("Error in create category", err.message);
   }
 };
 
@@ -58,7 +57,7 @@ const updateCategoryById = async (req, params) => {
       isCategoryExist,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return errorHandler("Error in update category", error.message);
   }
 };
